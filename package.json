@@ -1,5 +1,14 @@
 {
+  "name": "logo-maker",
+  "version": "1.0.0",
+  "description": "A simple logo maker",
+  "scripts": {
+    "test": "jest"
+},
+
   "dependencies": {
-    "inquirer": "^8.2.4"
+    "inquirer": "^8.2.4",
+    "jest": "^29.5.0",
+    "svg-builder": "^2.0.0"
   }
 }
