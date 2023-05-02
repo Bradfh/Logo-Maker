@@ -111,4 +111,22 @@ inquirer
   ])
   .then((answers) => {
     console.log(answers);
+    let shape;
+    if (answers.shape === 'Triangle') {
+      shape = new Triangle(answers.width, answers.height, answers.color, answers.text, answers.textColor, answers.textSize, answers.x1, answers.y1, answers.x2, answers.y2, answers.x3, answers.y3);
+    } else if (answers.shape === 'Square') {
+      shape = new Square(answers.height, answers.width, answers.color, answers.text, answers.textColor, answers.textSize, answers.x1, answers.y1);
+    }
+    else if (answers.shape === 'Circle') {
+      shape = new Circle(answers.height, answers.width, answers.radius, answers.color, answers.text, answers.textColor, answers.textSize, answers.cx, answers.cy);
+    }
+    const svg = shape.draw();
+    const fileName = answers.fileName;
+    const filePath = path.join(__dirname, 'examples', `${fileName}.svg`);
+    fs.writeFile(filePath, svg, (err) => {
+      if (err) throw err;
+      console.log('The file has been saved!');
+    }
+    );
+
   })
