@@ -1,1 +1,1 @@
-<svg height="400" width="400"><polygon points="200,0 400,400 0,400" style="fill:#800000;"/><text x="200" y="266.6666666666667" text-anchor="middle" style="font-size:50;fill:white;">SVG</text></svg>
+<svg height="400" width="300"><polygon points="150,0 300,400 0,400" style="fill:red;"/><text x="150" y="266.6666666666667" text-anchor="middle" style="font-size:40;fill:blue;">SVG</text></svg>

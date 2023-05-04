@@ -18,13 +18,13 @@ inquirer
     },
     {
       type: 'input',
-      name: 'height',
-      message: 'How tall should it be?',
+      name: 'width',
+      message: 'How wide should it be?',
     },
     {
       type: 'input',
-      name: 'width',
-      message: 'How wide should it be?',
+      name: 'height',
+      message: 'How tall should it be?',
     },
     {
       type: 'input',
@@ -64,14 +64,15 @@ inquirer
     console.log(answers);
     let shape;
     if (answers.shape === 'Triangle') {
-      shape = new Triangle(answers.width, answers.height, answers.color, answers.text, answers.textColor, answers.textSize, answers.x1, answers.y1, answers.x2, answers.y2, answers.x3, answers.y3);
+      shape = new Triangle(answers.width, answers.height, answers.color, answers.text, answers.textColor, answers.textSize);
     }
     else if (answers.shape === 'Square') {
-      shape = new Square(answers.height, answers.width, answers.color, answers.text, answers.textColor, answers.textSize, answers.x1, answers.y1);
+      shape = new Square(answers.height, answers.width, answers.color, answers.text, answers.textColor, answers.textSize);
     }
     else if (answers.shape === 'Circle') {
-      shape = new Circle(answers.height, answers.width, answers.radius, answers.color, answers.text, answers.textColor, answers.textSize, answers.cx, answers.cy);
+      shape = new Circle(answers.width, answers.color, answers.text, answers.textColor, answers.textSize);
     }
+
 
     const svg = shape.draw();
     const fileName = answers.fileName;
@@ -79,7 +80,16 @@ inquirer
     fs.writeFile(filePath, svg, (err) => {
       if (err) throw err;
       console.log('The file has been saved!');
-    }
-    );
+    });
 
-  })
+    const htmlPath = path.join(__dirname, 'examples', 'index.html');
+    fs.readFile(htmlPath, 'utf8', (err, data) => {
+      if (err) throw err;
+      const newData = data.replace(/(<div class="svg-container">)([\s\S]*?)(<\/div>)/,
+        `$1\n${svg}\n$3`);
+      fs.writeFile(htmlPath, newData, (err) => {
+        if (err) throw err;
+        console.log('The file has been saved!');
+      });
+    });
+  });
