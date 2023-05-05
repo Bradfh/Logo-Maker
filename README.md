@@ -6,7 +6,7 @@ This CLI app prompts users to input parameters for a simple SVG logo they would 
 
 Insert gif or link to demo
 
-[![Demo Video](https://i.imgur.com/vKb2F1B.png)](https://youtu.be/vt5fpE0bzSY)
+[![Demo Video](https://imgur.com/a/OQI9SgT)]([https://youtu.be/vt5fpE0bzSY](https://youtu.be/QcoZ6MRtw0Q))
 
 ## Installation
 
