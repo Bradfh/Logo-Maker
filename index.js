@@ -1,3 +1,5 @@
+// import/export/inquirer/fs requirements
+
 const inquirer = require('inquirer');
 const fs = require('fs');
 const path = require('path');
@@ -8,6 +10,7 @@ const Circle = require('./lib/circle.js');
 
 const shapes = ['Triangle', 'Square', 'Circle'];
 
+// inquirer prompts followed by inquirer output format.  I used the inquirer documentation to help me with this.
 inquirer
   .prompt([
     {
@@ -61,7 +64,6 @@ inquirer
     },
   ])
   .then((answers) => {
-    console.log(answers);
     let shape;
     if (answers.shape === 'Triangle') {
       shape = new Triangle(answers.width, answers.height, answers.color, answers.text, answers.textColor, answers.textSize);
@@ -73,15 +75,18 @@ inquirer
       shape = new Circle(answers.width, answers.color, answers.text, answers.textColor, answers.textSize);
     }
 
-
+    //  Write to file function.  This function is probably not necessary anymore since I added the HTML function
     const svg = shape.draw();
     const fileName = answers.fileName;
     const filePath = path.join(__dirname, 'examples', `${fileName}.svg`);
+    console.log(svg);
     fs.writeFile(filePath, svg, (err) => {
       if (err) throw err;
-      console.log('The file has been saved!');
     });
 
+    // Write to HTML function.  ChatGPT helped me with that regex.  This function reads the created HTML file then creates a variable that
+    // finds and replaces the specified div with the template literal containing the created SVG code.  
+    // That variable is then passed to the write file which actually does the writing to the HTML
     const htmlPath = path.join(__dirname, 'examples', 'index.html');
     fs.readFile(htmlPath, 'utf8', (err, data) => {
       if (err) throw err;
