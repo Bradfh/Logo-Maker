@@ -4,9 +4,8 @@
 This CLI app prompts users to input parameters for a simple SVG logo they would like to create for their projects.  It will then take those parameters and generate the SVG code that can be used to generate a logo.
 ## Demo
 
-Insert gif or link to demo
 
-[![Demo Video](https://imgur.com/a/OQI9SgT)](https://youtu.be/QcoZ6MRtw0Q))
+[LogoWalkthrough.webm](https://user-images.githubusercontent.com/128874401/236576382-f12d181e-0770-40ad-a2bb-3e75662d7026.webm)
 
 ## Installation
 
