@@ -1,5 +1,5 @@
 
-# Module 9 SVG Logo Maker
+# Module 10 SVG Logo Maker
 
 This CLI app prompts users to input parameters for a simple SVG logo they would like to create for their projects.  It will then take those parameters and generate the SVG code that can be used to generate a logo.
 ## Demo
